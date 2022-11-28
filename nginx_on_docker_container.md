@@ -58,5 +58,50 @@ You can run following systemctl command to restart docker service
 sudo systemctl restart docker
 ```
 
+### Run Nginx Container Using Docker
+Running Nginx in a docker container is a very easy and simple process. You just need to pull an Nginx image from the docker hub and create an Nginx container that serves as a web server for static files. To pull the latest Nginx image from the docker hub, you have to run the following command:
+
+```
+sudo docker pull nginx
+```
+
+![4](https://user-images.githubusercontent.com/11027110/204241250-90b6c1a2-71cf-4f65-8a74-57d5096b0ef1.jpg)
+
+
+To list the docker images, run the following command:
+
+```
+sudo docker images
+```
+
+To run a container from a pulled image, run the following command:
+
+```
+sudo docker run -d --name nginx-server -p 80:80 nginx
+```
+
+![5](https://user-images.githubusercontent.com/11027110/204242174-e11bd394-bbc0-401a-930e-60cdd4456f19.jpg)
+
+where,
+
+d = run the container in a detached mode
+
+name = name of the container to be created
+
+p = port the container will be mapped with host
+
+The output shows the container id created using the Nginx image.
+
+To list out the running container, run the command:
+```
+sudo docker ps -a
+```
+You can find container with the status in your terminal as below :
+
+![6](https://user-images.githubusercontent.com/11027110/204242867-74988551-1609-43da-9b88-01f7b017e2d7.jpg)
+
+
+
+
 
 
