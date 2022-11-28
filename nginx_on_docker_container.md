@@ -4,9 +4,11 @@ In this article, we are going to learn how to install Docker in Ubuntu 22.04 and
 Installing Docker in Ubuntu 22.04 is a straightforward and simple process. We need to update the Docker repository in Ubuntu, get the GPG key, and install docker packages and dependencies.
 
 ### Prerequisites
-Freshly installed Ubuntu 22.04
+Freshly installed Ubuntu 22.04 <br>
 Sudo privileged accounts to install packages.
-Install Docker in Ubuntu
+
+
+### Install Docker in Ubuntu
 You can install the latest version of Docker using the official docker repository in Ubuntu 22.04. For this, you need to add the GPG key for the official Docker repository to your system and add the repository configuration to the APT source.
 
 ###### Download Docker GPG Key
