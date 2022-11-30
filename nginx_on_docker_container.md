@@ -14,55 +14,55 @@ You can install the latest version of Docker using the official docker repositor
 ###### Download Docker GPG Key
 Run following command to add GPG key
 ```
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 ```
 ###### Add Docker GPG Key to System Repository
 Add and configure the official docker repository on your server.
 ```
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
 ```
 ###### Update System Repository
 Now, update APT packages to include new Docker packages using following command:
 ```
-sudo apt-get update
+$ sudo apt-get update
 ```
 
 ###### Install Docker
 Now you can install docker packages using the following command:
 ```
-sudo apt-get install docker-ce
+$ sudo apt-get install docker-ce
 ```
 During the docker packages installation, the installer package triggers systemd to automatically enable and start the docker service. Use the following command to check docker service status.
 ```
-sudo systemctl status docker
+$ sudo systemctl status docker
 ```
 ![2](https://user-images.githubusercontent.com/11027110/203275654-dcb81437-90d0-4898-999f-0f1081559eb1.jpg)
 
 Check docker version and other details using following command:
 ```
-sudo docker version
+$ sudo docker version
 ```
 ![3](https://user-images.githubusercontent.com/11027110/203275302-80447898-eb21-4fec-aa42-cf171d58acb3.jpg)
 
 ### Start, Stop or Restart Docker Daemon
 You can run following systemctl command to stop docker service
 ```
-sudo systemctl stop docker
+$ sudo systemctl stop docker
 ```
 You can run following systemctl command to start docker service
 ```
-sudo systemctl start docker
+$ sudo systemctl start docker
 ```
 You can run following systemctl command to restart docker service
 ```
-sudo systemctl restart docker
+$ sudo systemctl restart docker
 ```
 
 ### Run Nginx Container Using Docker
 Running Nginx in a docker container is a very easy and simple process. You just need to pull an Nginx image from the docker hub and create an Nginx container that serves as a web server for static files. To pull the latest Nginx image from the docker hub, you have to run the following command:
 
 ```
-sudo docker pull nginx
+$ sudo docker pull nginx
 ```
 
 ![4](https://user-images.githubusercontent.com/11027110/204241250-90b6c1a2-71cf-4f65-8a74-57d5096b0ef1.jpg)
@@ -71,13 +71,13 @@ sudo docker pull nginx
 To list the docker images, run the following command:
 
 ```
-sudo docker images
+$ sudo docker images
 ```
 
 To run a container from a pulled image, run the following command:
 
 ```
-sudo docker run -d --name nginx-server -p 80:80 nginx
+$ sudo docker run -d --name nginx-server -p 80:80 nginx
 ```
 
 ![5](https://user-images.githubusercontent.com/11027110/204242174-e11bd394-bbc0-401a-930e-60cdd4456f19.jpg)
@@ -94,7 +94,7 @@ The output shows the container id created using the Nginx image.
 
 To list out the running container, run the command:
 ```
-sudo docker ps -a
+$ sudo docker ps -a
 ```
 You can find container with the status in your terminal as below :
 
@@ -109,25 +109,25 @@ The container we just created is keeping all the Nginx configuration and static 
 To create a docker volume run the following command:
 
 ```
-sudo docker volume create nginx-data
+$ sudo docker volume create nginx-data
 ```
 ![8](https://user-images.githubusercontent.com/11027110/204246512-d788af61-8abf-4152-8a64-29040a087412.jpg)
 
 Get the docker volume information by running the following command:
 ```
-sudo docker volume inspect nginx-data
+$ sudo docker volume inspect nginx-data
 ```
 ![8](https://user-images.githubusercontent.com/11027110/204247886-7dfeddba-ac37-44a8-ab13-305f567b1b1f.jpg)
 
 For easy access, you can create a symlink of the docker volume directory. To create symlink run the following command:
 
 ```
-ln -s /var/lib/docker/volumes/nginx-data/_data /nginx
+$ ln -s /var/lib/docker/volumes/nginx-data/_data /nginx
 ```
 
 Now start the Nginx container with persistent data storage.
 ```
-sudo docker run -d --name nginx-server -p 80:80 -v nginx-data:/usr/share/nginx/html nginx
+$ sudo docker run -d --name nginx-server -p 80:80 -v nginx-data:/usr/share/nginx/html nginx
 ```
 Where,
 
@@ -144,7 +144,7 @@ v = name of docker volume
 
 Now verify the contents available in the data persistent directory with running following command:
 ```
-sudo ls /var/lib/docker/volumes/nginx-data/_data
+$ sudo ls /var/lib/docker/volumes/nginx-data/_data
 ```
 The following output will be displayed in your terminal:
 
@@ -153,7 +153,7 @@ The following output will be displayed in your terminal:
 
 Let's make some changes on the content of index.html file located at /var/lib/docker/volumes/nginx-data/_data
 ```
-sudo vi /var/lib/docker/volumes/nginx-data/_data/index.html
+$ sudo vi /var/lib/docker/volumes/nginx-data/_data/index.html
 ```
 
 Change some HTML code on index.html file and save it. Navigate the URL in your browser and you will find your Nginx contents changed as shown below:
